@@ -55,18 +55,21 @@ function ataqueTierra(){
 }
  
 function ataqueAleaterioEnemigo(){
-
     let ataqueAleatorio = aleatorio(1,3)
+        if(ataqueAleatorio == 1) ataqueEnemigo = 'FUEGO'
+        else if(ataqueAleatorio == 2) ataqueEnemigo = 'AGUA'
+        else{ataqueEnemigo = 'TIERRA'}
 
-    if(ataqueAleatorio == 1)
-    ataqueEnemigo = 'FUEGO'
-    else if (ataqueAleatorio == 2)
-    ataqueEnemigo = 'AGUA'
-    else {ataqueEnemigo = 'TIERRA'}
- 
-
+    crearMensaje()
 }
 
+function crearMensaje(){
+    let sectionMensaje = document.getElementById('mensajes')
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = ' Tu mascota ataca ' + ataqueJugador + ' la Mascota Enemiga atoco ' + ataqueEnemigo + //pendiente resultado
+    sectionMensaje.appendChild(parrafo)
+
+}
 
 
 
