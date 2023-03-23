@@ -1,5 +1,7 @@
 let ataqueJugador   
 let ataqueEnemigo
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 
 function iniciarJuego() {
@@ -64,19 +66,27 @@ function ataqueAleaterioEnemigo(){
 }
 
 function combate() {
+    let spanVidasJugador = document.getElementById('vidas-jugador')
+    let spanVidasEnemigo = document.getElementById('vidas-enemigo')
+
     if (ataqueEnemigo == ataqueJugador) {
         crearMensaje("EMPATE 🤝")
       } else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
         crearMensaje("GANASTE 😎")
-        
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
       } else if (ataqueJugador == 'AGAU' && ataqueEnemigo == 'FUEGO') {
         crearMensaje("GANASTE 😎")
-       
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
       } else if (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') {
         crearMensaje("GANASTE 😎")
-        
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
       } else {
         crearMensaje("PERDISTE 😭")
+        vidasJugador--
+        spanVidasJugador.innerHTML = vidasJugador
         
       }
 }
@@ -84,7 +94,7 @@ function combate() {
 function crearMensaje(resultado){
     let sectionMensaje = document.getElementById('mensajes')
     let parrafo = document.createElement('p')
-    parrafo.innerHTML = ' Tu mascota ataca ' + ataqueJugador + ' la Mascota Enemiga atoco ' + ataqueEnemigo + resultado
+    parrafo.innerHTML = 'Tu mascota ataca' + ataqueJugador + 'la Mascota Enemiga atoco' + ataqueEnemigo + resultado
     sectionMensaje.appendChild(parrafo)
 
 }
